@@ -1,6 +1,7 @@
 package AlphaPackage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AlphaSubset {
 	public String mPhrase;
@@ -24,19 +25,11 @@ public class AlphaSubset {
   				}
   			}
   		}
+  		Collections.sort(mSubset);
 		}
-		for(int i = 0; i < mSubset.size(); i++) { //bubble sorts the mSubset
-			for(int j = 0; j < mSubset.size()-i-1; j++) {
-				if(mSubset.get(i) > mSubset.get(j + 1))
-        {
-               char tempVar = mSubset.get(j + 1);
-               mSubset.set(j,mSubset.get(j+1));
-               mSubset.set(i+1, tempVar);
-        }
-			}
-		}
-		
 	}
+	
+	
 	
 	public ArrayList<Character> getSubset(){ //returns the mSubset
 		return mSubset;
@@ -47,7 +40,12 @@ public class AlphaSubset {
 	}
 	
 	public boolean compare(AlphaSubset passedSubset) { //compares the passed AlphaSubset's mSubset to this AlphaSubset's mSubset. If both are equal returns true, if not returns false
-		if(passedSubset.getSubset() == mSubset) {
+		if(passedSubset.getSubset().size() == getSubset().size()) {
+			for(int i = 0; i < getSubset().size();i++) {
+				if(passedSubset.getSubset().get(i) != getSubset().get(i)) {
+					return false;
+				}
+			}
 			return true;
 		}
 		return false;
