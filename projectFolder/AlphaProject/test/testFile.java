@@ -51,6 +51,18 @@ class testFile {
 		assertNotNull(testAlpha.getPhrase());
 	}
 	
+	@Test
+	public void testCharacterRemoval() {//tests to see if special characters are removed from the arraylist
+		AlphaSubset testAlpha = new AlphaSubset("AzZa*$()()");
+		ArrayList<Character> testSubset = new ArrayList<Character>();
+		testSubset.add('A');
+		testSubset.add('Z');
+		testSubset.add('a');
+		testSubset.add('z');
+		
+		assertEquals(testAlpha.getSubset(), testSubset);
+	}
+	
 
 	
 
